@@ -42,14 +42,14 @@ module.exports = (env, arg) => {
     output: {
       filename: isProduction ? "[name].[contenthash].js" : "main.js",
       path: path.resolve(__dirname, "build"),
-  
     },
     plugins: [
       new HtmlWebpackPlugin({ template: "public/index.html" }),
       new ModuleFederationPlugin({
         name: "container",
         remotes: {
-          mfe1: "mfe1@http://localhost:3000/remoteEntry.js",
+          PRODUCT: "PRODUCT@http://localhost:3001/remoteEntry.js",
+          USER: "USER@http://localhost:3002/remoteEntry.js",
         },
         filename: "remoteEntry.js",
         shared: {
@@ -64,17 +64,22 @@ module.exports = (env, arg) => {
             eager: true,
             requiredVersion: dependencies["react-dom"],
           },
+          "react-router-dom": {
+            singleton: true,
+            version: dependencies["react-router-dom"],
+          },
+          "@material-ui/styles": {
+            singleton: true,
+          },
         },
       }),
     ],
     module: { rules },
     devServer: {
       open: true,
-      port: 3001,
+      port: 3000,
       compress: true,
       historyApiFallback: true,
-
     },
-    devtool: "source-map",
   };
 };

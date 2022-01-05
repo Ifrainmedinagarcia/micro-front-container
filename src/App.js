@@ -1,20 +1,27 @@
-import Home from "./components/pages/Home";
+import { lazy, Suspense } from "react";
 import {
   BrowserRouter as Router,
   Switch,
   Route,
-  Link,
-  NavLink,
-} from "react-router-dom";
+} from "react-router-dom/cjs/react-router-dom.min";
+import ResponsiveAppBar from "./components/ResponsiveAppBar";
+import "./style.css";
 
-export const App = () => {
-  return (
-    <Router>
-      <Switch>
-        <Route exact path="/Home" component={Home} />
-      </Switch>
-    </Router>
-  );
-};
+const ProductApp = lazy(() => import("PRODUCT/app"));
+const User = lazy(() => import("USER/app"));
 
+const App = () => (
+  <Router>
+    <div className="shell-app">
+      <ResponsiveAppBar />
+      <Suspense fallback="loading...">
+        <Switch>
+          <Route path='/' exact/>
+          <Route path='/product' component={ProductApp}/>
+          <Route path='/user' component={User}/>
+        </Switch>
+      </Suspense>
+    </div>
+  </Router>
+);
 export default App;
