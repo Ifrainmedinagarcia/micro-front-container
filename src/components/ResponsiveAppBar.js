@@ -13,7 +13,7 @@ import Tooltip from "@material-ui/core/Tooltip";
 import MenuItem from "@material-ui/core/MenuItem";
 import { useHistory } from "react-router-dom";
 
-const pages = ["Home", "Product", "User"];
+const pages = ["Home", "Character", "Episodes"];
 const settings = ["Profile", "Account", "Dashboard", "Logout"];
 
 const ResponsiveAppBar = () => {
@@ -30,8 +30,8 @@ const ResponsiveAppBar = () => {
 
   const HistoryPush = {
     Home: () => history.push("/"),
-    Product: () => history.push("/product"),
-    User: () => history.push("/user"),
+    Character: () => history.push("/character"),
+    Episodes: () => history.push("/espisodes"),
   };
 
   const handleCloseNavMenu = (e) => {

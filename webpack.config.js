@@ -48,8 +48,8 @@ module.exports = (env, arg) => {
       new ModuleFederationPlugin({
         name: "container",
         remotes: {
-          PRODUCT: "PRODUCT@http://localhost:3001/remoteEntry.js",
-          USER: "USER@http://localhost:3002/remoteEntry.js",
+          BREAKINGBAD: "BREAKINGBAD@http://localhost:3001/remoteEntry.js",
+          EPISODES: "EPISODES@http://localhost:3002/remoteEntry.js",
         },
         filename: "remoteEntry.js",
         shared: {

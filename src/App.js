@@ -7,18 +7,19 @@ import {
 import ResponsiveAppBar from "./components/ResponsiveAppBar";
 import "./style.css";
 
-const ProductApp = lazy(() => import("PRODUCT/app"));
-const User = lazy(() => import("USER/app"));
+const BreakingBad = lazy(() => import("BREAKINGBAD/app"));
+const Episodes = lazy(() => import("EPISODES/app"));
 
 const App = () => (
   <Router>
     <div className="shell-app">
       <ResponsiveAppBar />
+      <h1>container app</h1>
       <Suspense fallback="loading...">
         <Switch>
-          <Route path='/' exact/>
-          <Route path='/product' component={ProductApp}/>
-          <Route path='/user' component={User}/>
+          <Route path="/" exact />
+          <Route path="/character" component={BreakingBad} />
+          <Route path="/espisodes" component={Episodes} />
         </Switch>
       </Suspense>
     </div>
